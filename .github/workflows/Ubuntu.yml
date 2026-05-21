@@ -4,7 +4,7 @@ jobs:
   system:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Updating & Cleaning ..
         run: cd ; sudo apt clean &&  sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && sudo apt update
       - name: Changing the Password ..
@@ -21,3 +21,6 @@ jobs:
         run: ngrok config add-authtoken ${{ secrets.NGROK_TOKEN }}
       - name: Running Ngrok ..   
         run: ngrok http --domain=${{secrets.NGROK_DOMAIN}} 8080
+       - name: actions-env
+       -uses: skiddph/actions-env@v1.0.3
+    
